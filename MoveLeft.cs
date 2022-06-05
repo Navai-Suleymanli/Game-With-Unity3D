@@ -21,7 +21,15 @@ public class MoveLeft : MonoBehaviour
     {
         if(playerControllerScript.gameOver == false)  // if gameOver is false
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            if (playerControllerScript.doubleSpeed)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * (speed*2));
+            }
+            else
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * speed);
+            }
+            
         }
         if (transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))   // if goes beyond the border
         {
